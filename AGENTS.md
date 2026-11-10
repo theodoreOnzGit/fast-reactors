@@ -11,15 +11,34 @@ which this repository builds on.
 Fast reactor work (EBR-II and others) built on outram-park, the maintainer's
 hobby alongside the MSRE repository. Licence: AGPL-3.0 (`LICENSE`).
 
+| Folder | What |
+|---|---|
+| `literature/` | Open literature only (see below), with its licence table in `literature/README.md` |
+| `rust/` | The Rust workspace (`rust/Cargo.toml`, members under `rust/crates/`) |
+
+- **The Rust workspace depends on OUTRAM PARK from crates.io only**: the
+  `outram-park` metacrate, `default-features = false`, enabling one feature
+  per backend used (e.g. `teh-o-prke`, `tuas_boussinesq_solver`). Never a
+  `path =` or `git =` dependency on outram-park-backend.
+- Generic capability (geometry, criticality, kinetics, thermal hydraulics
+  solvers) belongs upstream in outram-park-backend; this repository holds the
+  fast-reactor models and V&V cases built on it.
+- Build and test in release mode, from `rust/`:
+  `cargo build --release`, `cargo test --release`. Toolchain is pinned in
+  `rust/rust-toolchain.toml`, matching outram-park-backend.
+
 ## Task tracking
 
-Track work in **GitHub issues** on `theodoreOnzGit/fast-reactors` with `gh`.
+Track work in **GitHub issues** on `theodoreOnzGit/outram-park-backend` with
+`gh` (`--repo theodoreOnzGit/outram-park-backend`), under the relevant crate's
+epic. This repository has no tracker of its own.
 
 ```bash
-gh issue list --state open
-gh issue view <number>
-gh issue create --title "..." --body "..."
-gh issue comment <number> --body "..."
+R=theodoreOnzGit/outram-park-backend
+gh issue list -R $R --state open
+gh issue view -R $R <number>
+gh issue create -R $R --title "..." --body "..."
+gh issue comment -R $R <number> --body "..."
 ```
 
 - Use `gh` issues for all task and roadmap tracking, not markdown TODO lists.

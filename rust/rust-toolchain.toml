@@ -1,0 +1,5 @@
+# Same toolchain as outram-park-backend.
+[toolchain]
+channel = "1.99.1"
+components = ["rustfmt", "clippy"]
+profile = "minimal"

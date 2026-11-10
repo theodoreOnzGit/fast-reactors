@@ -1,0 +1,17 @@
+# fast-reactors Rust workspace. Depends on OUTRAM PARK from crates.io, never
+# on a path or git checkout of outram-park-backend.
+[workspace]
+resolver = "2"
+members = ["crates/ebr-ii"]
+
+[workspace.package]
+edition = "2021"
+license = "AGPL-3.0-only"
+repository = "https://github.com/theodoreOnzGit/fast-reactors"
+publish = false
+
+[workspace.dependencies]
+# The OUTRAM PARK metacrate re-exports each backend crate behind its own
+# feature. Default features (the GUI) are off; each crate here turns on only
+# the backends it uses.
+outram-park = { version = "0.1.1", default-features = false }

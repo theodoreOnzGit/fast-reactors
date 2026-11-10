@@ -1,0 +1,11 @@
+[package]
+name = "ebr-ii"
+version = "0.0.1"
+description = "EBR-II models (SHRT-17 / SHRT-45R benchmarks) on OUTRAM PARK. Research, education and V&V only."
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+outram-park = { workspace = true, features = ["teh-o-prke", "tuas_boussinesq_solver"] }
